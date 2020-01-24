@@ -1,0 +1,82 @@
+package com.example.fiskskaldjurandroidapp;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentManager;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
+
+import com.example.fiskskaldjurandroidapp.Fragments.MapFragment;
+import com.example.fiskskaldjurandroidapp.Fragments.OrdersFragment;
+import com.example.fiskskaldjurandroidapp.Fragments.SettingsFragment;
+
+public class StartScreenFragmentHolder extends AppCompatActivity {
+
+    //Fragment manager
+    private FragmentManager fragmentManager;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_start_screen_fragment_holder);
+
+
+        //Get support fragment manager
+        fragmentManager = getSupportFragmentManager();
+
+        //Set view as orders fragment
+        OrdersFragment employeeOrdersFragment = new OrdersFragment();
+        fragmentManager.beginTransaction()
+                .add(R.id.master_frame_holder, employeeOrdersFragment).commit();
+    }
+
+
+    // Navbar navigation
+    public void gotoOrders(View view) {
+        OrdersFragment ordersFragment = new OrdersFragment();
+        fragmentManager.beginTransaction()
+                .replace(R.id.master_frame_holder, ordersFragment)
+                .commit();
+
+        removeAllNiceBlue();
+        ImageButton im = findViewById(R.id.navbar_orders_button);
+        im.setColorFilter(ContextCompat.getColor(this, R.color.colorNiceBlue));
+    }
+
+    public void gotoMap(View view) {
+        MapFragment mapFragment = new MapFragment();
+        fragmentManager.beginTransaction()
+                .replace(R.id.master_frame_holder, mapFragment)
+                .commit();
+
+        removeAllNiceBlue();
+        ImageButton im = findViewById(R.id.navbar_map_button);
+        im.setColorFilter(ContextCompat.getColor(this, R.color.colorNiceBlue));
+    }
+
+    public void gotoSettings(View view) {
+        SettingsFragment settingsFragment = new SettingsFragment();
+        fragmentManager.beginTransaction()
+                .replace(R.id.master_frame_holder, settingsFragment)
+                .commit();
+
+        removeAllNiceBlue();
+        ImageButton im = findViewById(R.id.navbar_settings_button);
+        im.setColorFilter(ContextCompat.getColor(this, R.color.colorNiceBlue));
+    }
+
+
+    //Clearing the blue colors
+    public void removeAllNiceBlue() {
+        ImageButton imo = findViewById(R.id.navbar_orders_button);
+        imo.setColorFilter(ContextCompat.getColor(this, R.color.colorWhite));
+        ImageButton ims = findViewById(R.id.navbar_settings_button);
+        ims.setColorFilter(ContextCompat.getColor(this, R.color.colorWhite));
+        ImageButton imm = findViewById(R.id.navbar_map_button);
+        imm.setColorFilter(ContextCompat.getColor(this, R.color.colorWhite));
+    }
+
+
+}

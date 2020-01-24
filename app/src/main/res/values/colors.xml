@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">#B960B843</color>
+    <color name="colorPrimaryDark">#B95EAF41</color>
+    <color name="colorAccent">#000</color>
+
+    <!-- Orders activity -->
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorLightGrey">#D3D3D3</color>
+    <color name="colorBlack">#000</color>
+    <color name="colorDarkGrey">#222</color>
+    <color name="colorNiceBlue">#3493C0</color>
+    <color name="colorDarkerGrey">#131313</color>
+
+
 </resources>
