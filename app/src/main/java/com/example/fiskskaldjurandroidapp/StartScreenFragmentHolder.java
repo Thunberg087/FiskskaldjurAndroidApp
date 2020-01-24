@@ -4,13 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.example.fiskskaldjurandroidapp.Fragments.MapFragment;
 import com.example.fiskskaldjurandroidapp.Fragments.OrdersFragment;
 import com.example.fiskskaldjurandroidapp.Fragments.SettingsFragment;
+
+import static java.lang.Thread.sleep;
 
 public class StartScreenFragmentHolder extends AppCompatActivity {
 
@@ -79,4 +83,43 @@ public class StartScreenFragmentHolder extends AppCompatActivity {
     }
 
 
+
+    // Navbar navigation
+    public void goBackToStart() {
+        OrdersFragment ordersFragment = new OrdersFragment();
+        fragmentManager.beginTransaction()
+                .replace(R.id.master_frame_holder, ordersFragment)
+                .commit();
+
+        removeAllNiceBlue();
+        ImageButton im = findViewById(R.id.navbar_orders_button);
+        im.setColorFilter(ContextCompat.getColor(this, R.color.colorNiceBlue));
+    }
+
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case 1: {
+
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    FragmentManager fm = getSupportFragmentManager();
+                    MapFragment fragment = (MapFragment)fm.findFragmentById(R.id.map_fragment);
+
+                    fragment.initialize();
+
+
+                } else {
+
+                    Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show();
+                    goBackToStart();
+                }
+                return;
+            }
+
+        }
+    }
 }
