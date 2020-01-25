@@ -46,9 +46,13 @@ public class MainActivity extends AppCompatActivity {
         boolean x = MySQLFunctions.login(user, pass);
 
         //Check if login is valid.
-        if(x == true){
+        if(x){
             Toast.makeText(getApplicationContext(), "Inloggning lyckades.", Toast.LENGTH_LONG).show();
             navigateToStartScreen();
+
+            SharedPreferences prefs = this.getSharedPreferences("userPerferences", Context.MODE_PRIVATE);
+            SharedPreferences.Editor prefEditor = prefs.edit();
+            prefEditor.putString("currentUser", user);
         }
         else{
             Toast.makeText(getApplicationContext(), "Fel användarnamn eller lösenord.", Toast.LENGTH_LONG).show();
@@ -65,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void retrieveLoginState(){
-        SharedPreferences prefs = this.getSharedPreferences("loginState", Context.MODE_PRIVATE);
+        SharedPreferences prefs = this.getSharedPreferences("userPerferences", Context.MODE_PRIVATE);
         boolean autoLogin = prefs.getBoolean("autoLogin", false);
 
         if(autoLogin){
@@ -74,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void changeSwitch(View view) {
-        SharedPreferences prefs = this.getSharedPreferences("loginState", Context.MODE_PRIVATE);
+        SharedPreferences prefs = this.getSharedPreferences("userPerferences", Context.MODE_PRIVATE);
         SharedPreferences.Editor prefEditor = prefs.edit();
 
         Switch keepMeIn = findViewById(R.id.login_switch);

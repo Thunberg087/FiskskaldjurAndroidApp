@@ -19,7 +19,6 @@ public class MySQLFunctions {
                     Statement stmt=con.createStatement();
                     String query = "SELECT passHash FROM test WHERE username = '"+ username +"'";
                     ResultSet rs=stmt.executeQuery(query);
-
                     while(rs.next()) {
                         isLoginValid = BCrypt.checkpw(password, rs.getString(1));
                     }

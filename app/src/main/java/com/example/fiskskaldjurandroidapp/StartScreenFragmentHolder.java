@@ -28,6 +28,7 @@ public class StartScreenFragmentHolder extends AppCompatActivity {
         setContentView(R.layout.activity_start_screen_fragment_holder);
 
 
+
         //Get support fragment manager
         fragmentManager = getSupportFragmentManager();
 
