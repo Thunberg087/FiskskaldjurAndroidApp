@@ -1,7 +1,12 @@
 <resources>
     <string name="app_name">FiskskaldjurAndroidApp</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Login panel -->
+    <string name="login_username">Användarnamn</string>
+    <string name="login_password">Lösenord</string>
+    <string name="login_show_password">Visa lösenord</string>
+    <string name="login_button">Logga in</string>
+
+    <!-- Map activity -->
     <string name="title_activity_maps">Map</string>
 </resources>
