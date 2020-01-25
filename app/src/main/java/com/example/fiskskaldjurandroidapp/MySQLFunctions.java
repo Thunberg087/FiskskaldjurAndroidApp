@@ -13,7 +13,7 @@ public class MySQLFunctions {
     private static boolean isValid = false;
     public static boolean login(final String username, final String password) {
 
-        new Thread(new Runnable() {
+        Thread thread = new Thread() {
             @Override
             public void run() {
                 try{
@@ -26,29 +26,26 @@ public class MySQLFunctions {
 
                     while(rs.next()) {
                         isValid = BCrypt.checkpw(password, rs.getString(1));
-
-                        System.out.println(isValid + "<.daspdfsafpa");
                     }
                     con.close();
-                    Thread.currentThread().interrupt();
+                    Thread.interrupted();
                 }
                 catch (Exception e){
                     System.out.println(e.getMessage());
                 }
             }
-        }).start();
+        };
 
-        //Waiting for thread to finish.
+        thread.start();
         try{
-            Thread.currentThread().join(1000); //Får se hur stabil denna blir. :)
+            thread.join();
         }
         catch(InterruptedException e){
             System.out.println(e.getMessage());
         }
 
-
-        System.out.println(isValid + " isvalid5");
         return isValid;
+
     }
 
 
