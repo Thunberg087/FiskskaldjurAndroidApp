@@ -2,13 +2,16 @@ package com.example.fiskskaldjurandroidapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import java.sql.Connection;
@@ -25,6 +28,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        retrieveLoginState();
+
     }
 
     public void loginUser(View view) {
@@ -39,14 +45,10 @@ public class MainActivity extends AppCompatActivity {
         //Sending a login request to MySQL.
         boolean x = MySQLFunctions.login(user, pass);
 
+        //Check if login is valid.
         if(x == true){
             Toast.makeText(getApplicationContext(), "Inloggning lyckades.", Toast.LENGTH_LONG).show();
-
-            Intent intent = new Intent(this, StartScreenFragmentHolder.class);
-            startActivity(intent);
-
-            //Removing login page from backstack to prevent navigating back.
-            finish();
+            navigateToStartScreen();
         }
         else{
             Toast.makeText(getApplicationContext(), "Fel användarnamn eller lösenord.", Toast.LENGTH_LONG).show();
@@ -54,6 +56,40 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void navigateToStartScreen(){
+        Intent intent = new Intent(this, StartScreenFragmentHolder.class);
+        startActivity(intent);
+
+        //Removing login page from backstack to prevent navigating back.
+        finish();
+    }
+
+    public void retrieveLoginState(){
+        SharedPreferences prefs = this.getSharedPreferences("loginState", Context.MODE_PRIVATE);
+        boolean autoLogin = prefs.getBoolean("autoLogin", false);
+
+        if(autoLogin){
+            navigateToStartScreen();
+        }
+    }
+
+    public void changeSwitch(View view) {
+        SharedPreferences prefs = this.getSharedPreferences("loginState", Context.MODE_PRIVATE);
+        SharedPreferences.Editor prefEditor = prefs.edit();
+
+        Switch keepMeIn = findViewById(R.id.login_switch);
+
+        if(keepMeIn.isChecked()){
+            System.out.println("Checked!");
+            prefEditor.putBoolean("autoLogin", true);
+        }
+        else{
+            System.out.println("Not checked!");
+            prefEditor.putBoolean("autoLogin", false);
+        }
+
+        prefEditor.commit();
+    }
 }
 
 

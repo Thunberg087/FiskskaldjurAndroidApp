@@ -42,6 +42,28 @@
             android:inputType="textPassword"
             android:layout_below="@+id/login_username"/>
 
+        <!-- Keep me logged in -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/login_password">
+
+            <TextView
+                android:id="@+id/login_keep_me_in"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="@string/keep_me_logged_in"/>
+
+            <Switch
+                android:id="@+id/login_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/login_keep_me_in"
+                android:layout_alignParentRight="true"
+                android:onClick="changeSwitch"/>
+        </RelativeLayout>
+
         <!-- Button for login -->
         <Button
             android:id="@+id/login_button"

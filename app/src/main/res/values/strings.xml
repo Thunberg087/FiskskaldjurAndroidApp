@@ -6,7 +6,11 @@
     <string name="login_password">Lösenord</string>
     <string name="login_show_password">Visa lösenord</string>
     <string name="login_button">Logga in</string>
+    <string name="keep_me_logged_in">Behåll mig inloggad</string>
 
     <!-- Map activity -->
     <string name="title_activity_maps">Map</string>
+
+    <!-- Settings activity -->
+    <string name="settings_logout">Logga ut</string>
 </resources>
