@@ -3,6 +3,7 @@ package com.example.fiskskaldjurandroidapp;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -60,6 +61,7 @@ public class StartScreenFragmentHolder extends AppCompatActivity {
         im.setColorFilter(ContextCompat.getColor(this, R.color.colorNiceBlue));
     }
 
+
     public void gotoSettings(View view) {
         SettingsFragment settingsFragment = new SettingsFragment();
         fragmentManager.beginTransaction()
@@ -84,7 +86,6 @@ public class StartScreenFragmentHolder extends AppCompatActivity {
 
 
 
-    // Navbar navigation
     public void goBackToStart() {
         OrdersFragment ordersFragment = new OrdersFragment();
         fragmentManager.beginTransaction()
@@ -103,13 +104,16 @@ public class StartScreenFragmentHolder extends AppCompatActivity {
         switch (requestCode) {
             case 1: {
 
-                // If request is cancelled, the result arrays are empty.
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
-                    FragmentManager fm = getSupportFragmentManager();
-                    MapFragment fragment = (MapFragment)fm.findFragmentById(R.id.map_fragment);
-
-                    fragment.initialize();
+//                    FragmentManager fm = getSupportFragmentManager();
+//                    MapFragment fragment = (MapFragment)fm.findFragmentById(R.id.map_fragment);
+//                    final FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+//                    ft.detach(fragment);
+//                    ft.attach(fragment);
+//                    ft.commit();
+                    finish();
+                    startActivity(getIntent());
 
 
                 } else {
