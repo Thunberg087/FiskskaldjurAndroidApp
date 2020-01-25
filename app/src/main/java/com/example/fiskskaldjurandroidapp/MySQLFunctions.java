@@ -1,7 +1,5 @@
 package com.example.fiskskaldjurandroidapp;
 
-import android.net.IpSecManager;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -17,8 +15,7 @@ public class MySQLFunctions {
             public void run() {
                 try{
                     Class.forName("com.mysql.jdbc.Driver");
-                    Connection con= DriverManager.getConnection(
-                            "jdbc:mysql://78.71.86.80:3306/testAppFiskskaldjur","fiskskaldjur","regergerg");
+                    Connection con= DriverManager.getConnection("jdbc:mysql://78.71.86.80:3306/testAppFiskskaldjur", "fiskskaldjur", "regergerg");
                     Statement stmt=con.createStatement();
                     String query = "SELECT passHash FROM test WHERE username = '"+ username +"'";
                     ResultSet rs=stmt.executeQuery(query);

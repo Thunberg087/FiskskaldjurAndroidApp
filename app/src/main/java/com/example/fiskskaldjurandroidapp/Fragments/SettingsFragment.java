@@ -53,9 +53,9 @@ public class SettingsFragment extends Fragment {
                 prefEditor.commit();
 
                 Intent intent = new Intent(getContext(), MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK );
                 startActivity(intent);
 
-                //TODO: Kollar över detta senare. Får se hur man sköter en korrekt logout i MySQL.
             }
         });
 
