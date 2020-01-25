@@ -10,9 +10,8 @@ import java.sql.Statement;
 
 public class MySQLFunctions {
 
-    private static boolean isValid = false;
+    private static boolean isLoginValid = false;
     public static boolean login(final String username, final String password) {
-
         Thread thread = new Thread() {
             @Override
             public void run() {
@@ -25,7 +24,7 @@ public class MySQLFunctions {
                     ResultSet rs=stmt.executeQuery(query);
 
                     while(rs.next()) {
-                        isValid = BCrypt.checkpw(password, rs.getString(1));
+                        isLoginValid = BCrypt.checkpw(password, rs.getString(1));
                     }
                     con.close();
                     Thread.interrupted();
@@ -44,8 +43,7 @@ public class MySQLFunctions {
             System.out.println(e.getMessage());
         }
 
-        return isValid;
-
+        return isLoginValid;
     }
 
 
