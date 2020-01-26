@@ -88,7 +88,7 @@ public class SettingsFragment extends Fragment {
                     prefEditor.putBoolean("autoLogin", false);
                 }
 
-                prefEditor.commit();
+                prefEditor.apply();
             }
         });
     }
@@ -105,9 +105,9 @@ public class SettingsFragment extends Fragment {
                 SharedPreferences.Editor prefEditor = prefs.edit();
                 prefEditor.putBoolean("autoLogin", false);
                 prefEditor.putBoolean("isSendingLocation", false);
-                prefEditor.commit();
+                prefEditor.apply();
 
-                LocationSender.setIsSendingLocation(false);
+
 
                 Intent intent = new Intent(getContext(), MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK );

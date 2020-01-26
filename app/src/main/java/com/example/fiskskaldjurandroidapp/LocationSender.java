@@ -69,7 +69,10 @@ public class LocationSender extends Service {
         locationListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
+                if (prefs.getBoolean("isSendingLocation", false)) {
                     sendLocation(location.getLatitude(), location.getLongitude());
+
+                }
             }
 
             @Override
