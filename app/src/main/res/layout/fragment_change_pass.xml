@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.ChangePassFragment">
+
+    <ImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/password_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxWidth="75dp"
+        android:maxHeight="75dp"
+        android:tint="@color/colorBlack"
+        android:adjustViewBounds="true"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@drawable/ic_settings_black_24dp"
+        android:layout_marginTop="15dp"/>
+
+    <RelativeLayout
+        android:id="@+id/password_relative"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="50dp"
+        android:layout_below="@+id/password_image">
+
+        <!-- Current password -->
+        <TextView
+            android:id="@+id/password_current_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/password_current"
+            android:textColor="@color/colorBlack"
+            android:textSize="15sp"/>
+
+        <EditText
+            android:id="@+id/password_current"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorBlack"
+            android:textColor="@color/colorBlack"
+            android:inputType="textPassword"
+            android:layout_below="@+id/password_current_text"/>
+
+        <!-- New password -->
+        <TextView
+            android:id="@+id/password_new_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/password_current"
+            android:textColor="@color/colorBlack"
+            android:text="@string/password_new"
+            android:textSize="15sp"/>
+
+        <EditText
+            android:id="@+id/password_new"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorBlack"
+            android:textColor="@color/colorBlack"
+            android:inputType="textPassword"
+            android:layout_below="@+id/password_new_text"/>
+
+        <!-- Repeat password -->
+        <TextView
+            android:id="@+id/password_repeat_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/password_new"
+            android:textColor="@color/colorBlack"
+            android:text="@string/password_repeat"
+            android:textSize="15sp"/>
+
+        <EditText
+            android:id="@+id/password_repeat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorBlack"
+            android:textColor="@color/colorBlack"
+            android:inputType="textPassword"
+            android:layout_below="@+id/password_repeat_text"/>
+
+        <!-- Button for changing the password -->
+        <Button
+            android:id="@+id/password_change"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_below="@+id/password_repeat"
+            android:text="@string/password_change"
+            android:layout_marginTop="40dp"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

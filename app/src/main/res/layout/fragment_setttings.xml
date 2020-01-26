@@ -5,19 +5,110 @@
     android:layout_height="match_parent"
     tools:context=".Fragments.SettingsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Settings" />
+    <ImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/settings_image_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxWidth="75dp"
+        android:maxHeight="75dp"
+        android:adjustViewBounds="true"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@drawable/ic_settings_black_24dp"
+        android:layout_marginTop="15dp"/>
 
-    <!-- TODO: Remove this button later -->
+    <!-- Logged in as user -->
+    <TextView
+        android:id="@+id/settings_logged_as"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/settings_image_view"
+        android:padding="10dp"
+        android:layout_marginTop="15dp"
+        android:textSize="20sp"
+        android:textColor="@color/colorBlack"
+        android:text="@string/settings_no_user"
+        android:textAlignment="center"/>
+
+    <!-- Section one -->
+    <RelativeLayout
+        android:id="@+id/section_one"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/settings_logged_as"
+        android:layout_marginTop="15dp">
+
+        <RelativeLayout
+            android:id="@+id/relative_section_one"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/colorBlack">
+
+            <TextView
+                android:id="@+id/section_one_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/settings_account"
+                android:layout_centerVertical="true"
+                android:textSize="20sp"
+                android:layout_marginLeft="15dp"/>
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/settings_change_pass"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_below="@+id/relative_section_one"
+            android:text="@string/settings_change_pass"/>
+
+        <!-- Keep me logged in automatically -->
+        <RelativeLayout
+            android:id="@+id/settings_relative_auto_login"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_below="@+id/settings_change_pass"
+            android:background="@color/colorTemp">
+
+            <TextView
+                android:id="@+id/settings_keep_me_in"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/keep_me_logged_in"
+                android:textSize="15sp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"/>
+
+            <Switch
+                android:id="@+id/settings_auto_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/settings_keep_me_in"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="15dp"/>
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/settings_logout"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_below="@+id/settings_relative_auto_login"
+            android:text="@string/settings_logout"/>
+
+    </RelativeLayout>
+
+
+    <!-- TODO: Remove this button later
     <Button
         android:id="@+id/tempButton"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:text="@string/settings_logout"
-        android:layout_centerInParent="true"/>
+        android:layout_centerInParent="true"/> -->
 
 
 </RelativeLayout>
