@@ -13,4 +13,17 @@
 
     <!-- Settings activity -->
     <string name="settings_logout">Logga ut</string>
+    <string name="settings_no_user">Söker användarnamn..</string>
+    <string name="settings_account">Kontoinställningar</string>
+    <string name="settings_change_pass">Byt lösenord</string>
+    <string name="settings_section_two">Hantera</string>
+
+    <!-- Change password fragment -->
+    <string name="password_current">Nuvarande lösenord</string>
+    <string name="password_new">Nytt lösenord</string>
+    <string name="password_repeat">Repetera lösenord</string>
+    <string name="password_change">Byt lösenord</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

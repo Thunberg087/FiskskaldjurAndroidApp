@@ -30,7 +30,6 @@ public class MySQLFunctions {
                 }
             }
         };
-
         thread.start();
         try{
             thread.join();
@@ -42,7 +41,14 @@ public class MySQLFunctions {
         return isLoginValid;
     }
 
+    //TODO: Fix a method for changing the password
+    public static boolean changePassword(String username, String password, String newPassword){
+        System.out.println("To: Jonathan, From: Putte, Body: Fix MySQL for dis one pls, i dunno that");
+        System.out.println("Username:" + username + " Password:" + password + " New Password:" + newPassword);
 
+        //Return true or false depending on if password was changed or not.
+        return true;
+    }
 }
 
 

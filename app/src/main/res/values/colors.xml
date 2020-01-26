@@ -12,5 +12,8 @@
     <color name="colorNiceBlue">#3493C0</color>
     <color name="colorDarkerGrey">#131313</color>
 
+    <!-- TODO: FIX COLOR -->
+    <color name="colorTemp">#595859</color>
+
 
 </resources>

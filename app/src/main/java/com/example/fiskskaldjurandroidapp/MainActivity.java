@@ -30,9 +30,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         retrieveLoginState();
-
     }
 
+    //Button for logging in user
     public void loginUser(View view) {
         //Retrieving data by ID.
         EditText username = findViewById(R.id.login_username);
@@ -47,12 +47,12 @@ public class MainActivity extends AppCompatActivity {
 
         //Check if login is valid.
         if(x){
-            Toast.makeText(getApplicationContext(), "Inloggning lyckades.", Toast.LENGTH_LONG).show();
-            navigateToStartScreen();
-
             SharedPreferences prefs = this.getSharedPreferences("userPerferences", Context.MODE_PRIVATE);
             SharedPreferences.Editor prefEditor = prefs.edit();
             prefEditor.putString("currentUser", user);
+            prefEditor.commit();
+
+            navigateToStartScreen();
         }
         else{
             Toast.makeText(getApplicationContext(), "Fel användarnamn eller lösenord.", Toast.LENGTH_LONG).show();
@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    //Navigating to the start screen
     public void navigateToStartScreen(){
         Intent intent = new Intent(this, StartScreenFragmentHolder.class);
         startActivity(intent);
@@ -68,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
+    //Retrieving login state from SharedPreferences
     public void retrieveLoginState(){
         SharedPreferences prefs = this.getSharedPreferences("userPerferences", Context.MODE_PRIVATE);
         boolean autoLogin = prefs.getBoolean("autoLogin", false);
@@ -77,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //Change the switch button for autologin
     public void changeSwitch(View view) {
         SharedPreferences prefs = this.getSharedPreferences("userPerferences", Context.MODE_PRIVATE);
         SharedPreferences.Editor prefEditor = prefs.edit();
