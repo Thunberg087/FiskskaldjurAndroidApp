@@ -19,7 +19,6 @@ import android.widget.CompoundButton;
 import android.widget.Switch;
 
 import com.example.fiskskaldjurandroidapp.R;
-import com.example.fiskskaldjurandroidapp.LocationSender;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
@@ -94,11 +93,6 @@ public class MapFragment extends Fragment {
                     }
                 }
 
-//                // For dropping a marker at a point on the Map
-//                LatLng sydney = new LatLng(-34, 151);
-//                // For zooming automatically to the location of the marker
-//                CameraPosition cameraPosition = new CameraPosition.Builder().target(sydney).zoom(12).build();
-//                googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
             }
         });
 

@@ -12,9 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Switch;
 
-import com.example.fiskskaldjurandroidapp.LocationSender;
+import com.example.fiskskaldjurandroidapp.LocationSender1;
 import com.example.fiskskaldjurandroidapp.MainActivity;
 import com.example.fiskskaldjurandroidapp.R;
 
@@ -53,11 +52,11 @@ public class SettingsFragment extends Fragment {
                 SharedPreferences.Editor prefEditor = prefs.edit();
                 prefEditor.putBoolean("autoLogin", false);
                 prefEditor.putBoolean("isSendingLocation", false);
-                prefEditor.commit();
+                prefEditor.apply();
 
 
 
-                LocationSender.setIsSendingLocation(false);
+                LocationSender1.setIsSendingLocation(false);
 
                 Intent intent = new Intent(getContext(), MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK );

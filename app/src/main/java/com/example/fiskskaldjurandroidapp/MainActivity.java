@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
             SharedPreferences prefs = this.getSharedPreferences("userPerferences", Context.MODE_PRIVATE);
             SharedPreferences.Editor prefEditor = prefs.edit();
             prefEditor.putString("currentUser", user);
+            prefEditor.apply();
         }
         else{
             Toast.makeText(getApplicationContext(), "Fel användarnamn eller lösenord.", Toast.LENGTH_LONG).show();
@@ -92,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
             prefEditor.putBoolean("autoLogin", false);
         }
 
-        prefEditor.commit();
+        prefEditor.apply();
     }
 }
 
