@@ -8,6 +8,11 @@
     <string name="login_button">Logga in</string>
     <string name="keep_me_logged_in">Behåll mig inloggad</string>
 
+    <!-- Orders fragment -->
+    <string name="orders_text1">TEXT 1</string>
+    <string name="orders_text2">TEXT 2</string>
+    <string name="orders_text3">TEXT 3</string>
+
     <!-- Map activity -->
     <string name="title_activity_maps">Map</string>
 

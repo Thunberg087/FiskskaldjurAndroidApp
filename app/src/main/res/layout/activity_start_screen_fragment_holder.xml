@@ -23,14 +23,14 @@
         android:layout_alignParentBottom="true"
         android:background="@color/colorDarkerGrey"
         android:orientation="horizontal"
-        android:weightSum="3">
+        android:weightSum="4">
 
         <ImageButton
             android:id="@+id/navbar_orders_button"
             app:srcCompat="@drawable/order_button_image"
             android:layout_height="30dp"
             android:layout_gravity="center"
-            android:layout_width="50dp"
+            android:layout_width="40dp"
             android:layout_weight="1"
             android:scaleType="fitCenter"
             android:background="#0000"
@@ -39,11 +39,23 @@
             />
 
         <ImageButton
+            android:id="@+id/navbar_qr_button"
+            app:srcCompat="@drawable/qr_scanner"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_width="40dp"
+            android:layout_weight="1"
+            android:scaleType="fitCenter"
+            android:background="#0000"
+            android:onClick="gotoScanQr"
+            />
+
+        <ImageButton
             android:id="@+id/navbar_map_button"
             app:srcCompat="@drawable/map_button_image"
             android:layout_height="30dp"
             android:layout_gravity="center"
-            android:layout_width="50dp"
+            android:layout_width="40dp"
             android:layout_weight="1"
             android:scaleType="fitCenter"
             android:background="#0000"
@@ -55,7 +67,7 @@
             app:srcCompat="@drawable/settings_button_image"
             android:layout_height="30dp"
             android:layout_gravity="center"
-            android:layout_width="50dp"
+            android:layout_width="40dp"
             android:layout_weight="1"
             android:scaleType="fitCenter"
             android:background="#0000"

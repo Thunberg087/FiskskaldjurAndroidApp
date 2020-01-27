@@ -9,27 +9,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.fiskskaldjurandroidapp.LocationSender1;
 import com.example.fiskskaldjurandroidapp.R;
 
 /**
- * {@link OrdersFragment}.
+ * A simple {@link Fragment} subclass.
  */
-public class OrdersFragment extends Fragment {
+public class ScanQrFragment extends Fragment {
 
 
-    public OrdersFragment() {
+    public ScanQrFragment() {
         // Required empty public constructor
     }
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_orders, container, false);
-
-
-        return view;
+        return inflater.inflate(R.layout.fragment_scan_qr, container, false);
     }
 
 }

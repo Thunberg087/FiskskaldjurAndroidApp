@@ -3,7 +3,6 @@ package com.example.fiskskaldjurandroidapp;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -13,7 +12,8 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.fiskskaldjurandroidapp.Fragments.MapFragment;
-import com.example.fiskskaldjurandroidapp.Fragments.OrdersFragment;
+import com.example.fiskskaldjurandroidapp.Fragments.Orders.OrdersFragment;
+import com.example.fiskskaldjurandroidapp.Fragments.ScanQrFragment;
 import com.example.fiskskaldjurandroidapp.Fragments.SettingsFragment;
 
 import static java.lang.Thread.sleep;
@@ -53,6 +53,17 @@ public class StartScreenFragmentHolder extends AppCompatActivity {
         im.setColorFilter(ContextCompat.getColor(this, R.color.colorNiceBlue));
     }
 
+    public void gotoScanQr(View view) {
+        ScanQrFragment scanQrFragment = new ScanQrFragment();
+        fragmentManager.beginTransaction()
+                .replace(R.id.master_frame_holder, scanQrFragment)
+                .commit();
+
+        removeAllNiceBlue();
+        ImageButton im = findViewById(R.id.navbar_qr_button);
+        im.setColorFilter(ContextCompat.getColor(this, R.color.colorNiceBlue));
+    }
+
     public void gotoMap(View view) {
         MapFragment mapFragment = new MapFragment();
         fragmentManager.beginTransaction()
@@ -81,8 +92,13 @@ public class StartScreenFragmentHolder extends AppCompatActivity {
     public void removeAllNiceBlue() {
         ImageButton imo = findViewById(R.id.navbar_orders_button);
         imo.setColorFilter(ContextCompat.getColor(this, R.color.colorWhite));
+
+        ImageButton imx = findViewById(R.id.navbar_qr_button);
+        imx.setColorFilter(ContextCompat.getColor(this, R.color.colorWhite));
+
         ImageButton ims = findViewById(R.id.navbar_settings_button);
         ims.setColorFilter(ContextCompat.getColor(this, R.color.colorWhite));
+
         ImageButton imm = findViewById(R.id.navbar_map_button);
         imm.setColorFilter(ContextCompat.getColor(this, R.color.colorWhite));
     }

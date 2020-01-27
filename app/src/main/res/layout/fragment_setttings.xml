@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     tools:context=".Fragments.SettingsFragment">
 
+
     <ImageView
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/settings_image_view"
