@@ -4,12 +4,14 @@ package com.example.fiskskaldjurandroidapp.Fragments;
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.hardware.Camera;
 import android.os.Bundle;
 
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
 import android.os.Vibrator;
+import android.util.DisplayMetrics;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.SurfaceHolder;
@@ -25,6 +27,7 @@ import com.google.android.gms.vision.barcode.Barcode;
 import com.google.android.gms.vision.barcode.BarcodeDetector;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -55,12 +58,34 @@ public class ScanQrFragment extends Fragment {
         return view;
     }
 
+
+    int DSI_height;
+    int DSI_width;
+    Camera mCamera = Camera.open();
+    Camera.Parameters parameters;
     public void qrScanner(){
         //Initialize surfaceView
         surfaceView = view.findViewById(R.id.qr_preview);
 
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getActivity().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        DSI_height = displayMetrics.heightPixels;
+        DSI_width = displayMetrics.widthPixels;
+
         detector = new BarcodeDetector.Builder(getContext()).setBarcodeFormats(Barcode.QR_CODE).build();
-        cameraSource = new CameraSource.Builder(getContext(), detector).setRequestedPreviewSize(640, 480).build();
+        cameraSource = new CameraSource.Builder(getContext(), detector).setRequestedPreviewSize(DSI_height-100, DSI_width).build();
+
+
+        try {
+            mCamera = Camera.open();
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+        }
+
+        parameters = mCamera.getParameters();
+        parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_AUTO);
+        mCamera.setParameters(parameters);
+
         surfaceView.getHolder().addCallback(new SurfaceHolder.Callback() {
             @Override
             public void surfaceCreated(SurfaceHolder holder) {
