@@ -105,6 +105,7 @@ public class ScanQrFragment extends Fragment {
                             Vibrator vibrator = (Vibrator)getContext().getSystemService(Context.VIBRATOR_SERVICE);
                             vibrator.vibrate(1000);
                             textView.setText(qrCodes.valueAt(0).displayValue);
+                            //--------
                             System.out.println(qrCodes.valueAt(0).displayValue);
                         }
                     });
