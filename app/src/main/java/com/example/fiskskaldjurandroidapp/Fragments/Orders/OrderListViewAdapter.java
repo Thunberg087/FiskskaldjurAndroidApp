@@ -13,8 +13,8 @@ import java.util.ArrayList;
 
 public class OrderListViewAdapter extends BaseAdapter {
 
-    Context context;
-    ArrayList<OrderData> orderArray;
+    private Context context;
+    private ArrayList<OrderData> orderArray;
     private static LayoutInflater inflater = null;
 
     public OrderListViewAdapter(Context context, ArrayList<OrderData> orderArray){

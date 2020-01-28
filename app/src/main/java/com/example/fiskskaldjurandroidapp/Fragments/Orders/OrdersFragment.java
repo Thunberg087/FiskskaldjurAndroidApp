@@ -49,9 +49,7 @@ public class OrdersFragment extends Fragment {
         OrderData orderData1 = new OrderData("Räkor", "3kg", 3);
         orderArray.add(orderData1);
 
-
         listView = view.findViewById(R.id.list_view);
-        //listView = getActivity().findViewById(R.id.list_view);
         listView.setAdapter(new OrderListViewAdapter(getContext(), orderArray));
     }
 

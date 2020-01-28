@@ -5,11 +5,14 @@
     android:layout_height="match_parent"
     tools:context=".Fragments.ScanQrFragment">
 
-    <TextView
+    <SurfaceView
+        android:id="@+id/qr_preview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Scan QR Fragment"
-        android:textColor="@color/colorNiceBlue"
-        />
+        android:layout_height="match_parent"/>
+
+    <TextView
+        android:id="@+id/qr_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
 </RelativeLayout>
