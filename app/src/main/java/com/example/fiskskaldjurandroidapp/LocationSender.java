@@ -54,7 +54,7 @@ public class LocationSender extends Service {
 
     @Override
     public void onCreate() {
-
+        startForeground();
         prefs = getSharedPreferences("userPerferences", MODE_PRIVATE);
 
 
@@ -63,6 +63,7 @@ public class LocationSender extends Service {
                 return;
             }
         }
+
 
 
 
@@ -103,6 +104,7 @@ public class LocationSender extends Service {
     }
 
     private void sendLocation(final double latitude, final double longitude) {
+
         Thread thread = new Thread() {
             @Override
             public void run() {
@@ -150,92 +152,7 @@ public class LocationSender extends Service {
     }
     }
 
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId){
 
-        // do your jobs here
-
-//
-//        prefs = getSharedPreferences("userPerferences", MODE_PRIVATE);
-//
-//
-//
-//        Thread thread = new Thread() {
-//            @Override
-//            public void run() {
-//                try {
-//                    sleep(3000);
-//                    while (true) {
-//
-//                        isSendingLocation = prefs.getBoolean("isSendingLocation", false);
-//                        if (isSendingLocation) {
-//                            System.out.println("Sending location...");
-//
-//                            Thread thread = new Thread() {
-//                                @Override
-//                                public void run() {
-//                                    try
-//                                    {
-//
-//
-//                                        // create a mysql database connection
-//                                        Class.forName("com.mysql.jdbc.Driver");
-//                                        Connection con = DriverManager.getConnection(MySQLUrl, MySQLUser, MySQLPass);
-//
-//                                        double longitude = 0.0;
-//                                        double latitude = 0.0;
-//
-//                                        LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-//                                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//                                            if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-//                                                Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-//                                                longitude = location.getLongitude();
-//                                                latitude = location.getLatitude();
-//
-//                                            }
-//                                        }
-//
-//                                        // the mysql insert statement
-//                                        String query = "INSERT INTO locations (username, latitude, longitude)" + " values (?, ?, ?)";
-//
-//                                        // create the mysql insert prepared statement
-//                                        PreparedStatement preparedStmt = con.prepareStatement(query);
-//                                        preparedStmt.setString(1, prefs.getString("currentUser", null));
-//                                        preparedStmt.setDouble(2, longitude);
-//                                        preparedStmt.setDouble(3, latitude);
-//
-//
-//                                        // execute the prepared statement
-//                                        preparedStmt.execute();
-//
-//                                        con.close();
-//                                    }
-//                                    catch (Exception e)
-//                                    {
-//                                        System.err.println("Got an exception!");
-//                                        System.err.println(e.getMessage());
-//                                    }
-//                                }
-//                            };
-//
-//                            thread.start();
-//                        }
-//                        sleep(1000*10);
-//                    }
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        };
-//
-//        thread.start();
-
-        // do your jobs here
-
-        startForeground();
-
-        return super.onStartCommand(intent, flags, startId);
-    }
 
     private void startForeground() {
         Intent notificationIntent = new Intent(this, MainActivity.class);
@@ -248,7 +165,7 @@ public class LocationSender extends Service {
         startForeground(NOTIF_ID, new NotificationCompat.Builder(this,
                 NOTIF_CHANNEL_ID) // don't forget create a notification channel first
                 .setOngoing(true)
-                .setSmallIcon(R.drawable.common_google_signin_btn_icon_dark)
+                .setSmallIcon(R.drawable.common_full_open_on_phone)
                 .setContentTitle(getString(R.string.app_name))
                 .setContentText("Service is running background")
                 .setContentIntent(pendingIntent)
