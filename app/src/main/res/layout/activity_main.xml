@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorWhite"
     tools:context=".MainActivity">
 
     <ImageView
@@ -32,6 +33,9 @@
             android:id="@+id/login_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/colorBlack"
+            android:backgroundTint="@color/colorBlack"
+            android:textColorHint="@color/colorBlack"
             android:hint="@string/login_username"/>
 
         <EditText
@@ -40,6 +44,9 @@
             android:layout_height="wrap_content"
             android:hint="@string/login_password"
             android:inputType="textPassword"
+            android:textColor="@color/colorBlack"
+            android:backgroundTint="@color/colorBlack"
+            android:textColorHint="@color/colorBlack"
             android:layout_below="@+id/login_username"/>
 
         <!-- Keep me logged in -->
@@ -53,6 +60,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
+                android:textColor="@color/colorBlack"
                 android:layout_marginLeft="3dp"
                 android:text="@string/keep_me_logged_in"/>
 

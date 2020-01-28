@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -66,10 +67,11 @@ public class ChangePassFragment extends Fragment {
 
                 //Check if newPass is equal to repeatPass
                 if(newPass.equals(repeatPass)){
-                    boolean passDidChange = MySQLFunctions.changePassword(username, currentPass, newPass);
+                   boolean passDidChange = MySQLFunctions.changePassword(username, currentPass, newPass);
 
-                    if(passDidChange){
+                   if(passDidChange){
                         Toast.makeText(getContext(), "Ditt lösenord har ändrats!", Toast.LENGTH_LONG).show();
+                        navigateBackToSettings();
                     }
                     else{
                         Toast.makeText(getContext(), "Lösenordet kunde inte ändras!", Toast.LENGTH_LONG).show();
@@ -81,6 +83,13 @@ public class ChangePassFragment extends Fragment {
             }
         });
 
+    }
+
+    public void navigateBackToSettings(){
+        Fragment fragment = new SettingsFragment();
+        FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.master_frame_holder, fragment);
+        ft.commit();
     }
 
 }

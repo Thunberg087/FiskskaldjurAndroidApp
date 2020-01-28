@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Build;
+import android.widget.Toast;
 
 import androidx.core.content.ContextCompat;
 
@@ -67,8 +68,6 @@ public class MySQLFunctions {
             public void run() {
                 try
                 {
-
-
                     // create a mysql database connection
                     Class.forName("com.mysql.jdbc.Driver");
                     Connection con = DriverManager.getConnection(MySQLUrl, MySQLUser, MySQLPass);
@@ -95,7 +94,6 @@ public class MySQLFunctions {
                     preparedStmt.setDouble(2, longitude);
                     preparedStmt.setDouble(3, latitude);
 
-
                     // execute the prepared statement
                     preparedStmt.execute();
 
@@ -108,20 +106,60 @@ public class MySQLFunctions {
                 }
             }
         };
-
         thread.start();
-
     }
-
 
     //TODO: Fix a method for changing the password
-    public static boolean changePassword(String username, String password, String newPassword){
-        System.out.println("To: Jonathan, From: Putte, Body: Fix MySQL for dis one pls, i dunno that");
-        System.out.println("Username:" + username + " Password:" + password + " New Password:" + newPassword);
+    private static boolean updatedPassword = false;
+    public static boolean changePassword(final String username, final String password, final String newPassword){
+        updatedPassword = false;
+        Thread thread = new Thread() {
+            @Override
+            public void run() {
+                try{
+                    Class.forName("com.mysql.jdbc.Driver");
+                    Connection con= DriverManager.getConnection(MySQLUrl, MySQLUser, MySQLPass);
+                    Statement stmt=con.createStatement();
+                    String query = "SELECT passHash FROM test WHERE username = '"+ username +"'";
+                    ResultSet rs=stmt.executeQuery(query);
 
-        //Return true or false depending on if password was changed or not.
-        return true;
+                    boolean x = false;
+                    while(rs.next()) {
+                        x = BCrypt.checkpw(password, rs.getString(1));
+                    }
+
+                    if(x == true){
+                        //Hash the new password
+                        String hashedPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt());
+
+                        String updateQuery = "UPDATE test SET passHash = '"+hashedPassword+"' WHERE username = '"+username+"'";
+                        stmt.execute(updateQuery);
+                        updatedPassword = true;
+                    }
+                    else{
+                        System.out.println("Wrong password");
+                    }
+
+                    rs.close();
+                    con.close();
+                }
+                catch (Exception e){
+                    System.out.println(e.getMessage());
+                }
+            }
+        };
+        thread.start();
+        try{
+            thread.join();
+        }
+        catch(InterruptedException e){
+            System.out.println(e.getMessage());
+        }
+
+        System.out.println(updatedPassword);
+        return updatedPassword;
     }
+
 
 
 }
